@@ -8,9 +8,7 @@ import { getNodeVersion, logStep } from './utils';
 function copy(source, destination, vars = {}) {
   let contents = fs.readFileSync(source).toString();
 
-  console.log('COPY FILE')
-  console.log(source)
-  console.log(destination)
+  console.log(`copying asset: ${source} -> ${destination}`)
 
   contents = ejs.render(contents, vars);
 
@@ -72,8 +70,6 @@ export function injectFiles(api, name, version, configOptions, bundlePath) {
   sourcePathes.forEach((sourcePath) => {
     copy(sourcePath, [destPath, '/.ebextensions/', sourcePath.replace(/^.*[\\\/]/, '')].join(''));
   });
-
-  console.log(sourcePathes)
 }
 
 export function archiveApp(buildLocation, api) {

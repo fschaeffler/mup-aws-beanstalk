@@ -61,6 +61,12 @@ export function injectFiles(api, name, version, configOptions, bundlePath) {
   sourcePath = api.resolvePath(__dirname, './assets/health-check.js');
   destPath = api.resolvePath(bundlePath, 'bundle/health-check.js');
   copy(sourcePath, destPath);
+
+  const sourcePathes = find.fileSync(/\.config$/, api.resolvePath(__dirname, './assets/'));
+  destPath = api.resolvePath(bundlePath, 'bundle/');
+  sourcePathes.forEach((sourcePath) => {
+    copy(sourcePath, destPath);
+  });
 }
 
 export function archiveApp(buildLocation, api) {

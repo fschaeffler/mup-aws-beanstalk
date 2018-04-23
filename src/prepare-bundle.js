@@ -1,6 +1,7 @@
 import archiver from 'archiver';
 import fs from 'fs';
 import ejs from 'ejs';
+import find from 'find';
 import { round } from 'lodash';
 import { getNodeVersion, logStep } from './utils';
 

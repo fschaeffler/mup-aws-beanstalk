@@ -66,7 +66,7 @@ export function injectFiles(api, name, version, configOptions, bundlePath) {
   const sourcePathes = find.fileSync(/\.config$/, api.resolvePath(__dirname, './assets/'));
   destPath = api.resolvePath(bundlePath, 'bundle/');
   sourcePathes.forEach((sourcePath) => {
-    copy(sourcePath, destPath);
+    copy(sourcePath, [destPath, sourcePath.replace(/^.*[\\\/]/, '')].join(''));
   });
 }
 
